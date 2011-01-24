@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+$: << File.join(File.dirname(__FILE__))
 require 'irb_rc'
 require 'dereference_url_shorteners'
 

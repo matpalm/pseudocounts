@@ -1,0 +1,62 @@
+$ head -n1 tokenised.last10.txt
+@cpen usually i fave tweets with links in them that i want to read later but not always ;)
+
+$ head -n1 tokenised.last10.txt | ./split.rb 
+@cpen
+usually
+i
+......
+but
+not
+always
+;)
+
+$ head -n1 tokenised.last10.txt | ./split.rb | sort | uniq -c
+      1 ;)
+      1 always
+      1 but
+      1 @cpen
+      1 fave
+      2 i
+      1 in
+      1 later
+      1 links
+      1 not
+      1 read
+      1 that
+      1 them
+      1 to
+      1 tweets
+      1 usually
+      1 want
+      1 with
+
+$ head -n1 tokenised.last10.txt | ./split.rb | sort| uniq -c | ./just_freqs.sh 
+1
+1
+1
+1
+1
+2
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+
+$ head -n1 tokenised.last10.txt | ./split.rb | sort| uniq -c | ./just_freqs.sh | sort | uniq -c
+     17 1
+      1 2
+
+=> 17 items that appeared once, 1 item that appeared twice
+
+$ head -n1 tokenised.last10.txt | ./split.rb | sort| uniq -c | ./just_freqs.sh | sort | uniq -c | ./swap_columns.sh | sort -n | ./D_SGT
+     17 1
+      1 2

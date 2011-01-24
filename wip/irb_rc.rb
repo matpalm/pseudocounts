@@ -1,5 +1,4 @@
 # source this in irb for hackery
-
 require 'rubygems'
 #require 'twitter'
 require 'mongo'

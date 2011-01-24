@@ -1,0 +1,8 @@
+run_comparison
+  run comparison of various estimators
+ 
+good_turing
+  helper scripts and c source file for a good turing implementation  
+
+wip
+  wip scripts used for building tokenised.txt and for building index.html

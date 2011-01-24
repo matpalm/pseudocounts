@@ -1,190 +1,209 @@
-<pre>
-say we run the bar at a soldout <a href="http://en.wikipedia.org/wiki/Bad_religion">bad religion</a> concert.
+<html>
+<head>
+</head>
 
-the bar serves beer, scotch and water and so that we can know how much to order for tomorrow's gig we record orders over the night... 
+<body>
 
-beer 1000  0.66
-scotch 300 0.20
-water 200  0.14
+<p>
+say we are running the bar at a soldout <a href="http://en.wikipedia.org/wiki/Bad_religion">bad religion</a> concert.
+</p>
 
+<p>
+the bar serves beer, scotch and water and so that we can know how much to order for tomorrow's
+gig we record orders over the night... 
+</p>
+
+<p>
+<table>
+<tr><td>drink</td><td>#sales</td></tr> 
+<tr><td>beer</td><td>1000</td></tr> 
+<tr><td>scotch</td><td>300</td></tr> 
+<tr><td>water</td><td>200</td></tr> 
+</table>
+</p>
+
+<p>
 using these numbers we can predict a number of things..
+</p>
 
-eg1 what is the chance the next person will order a beer? 
+<p>
+what is the chance the next person will order a beer? </br>
 it's a pretty simple probability; 1000 beers / 1500 total drinks = 0.66 or 66%
+</p>
 
-eg2 what is the chance the next person will order a water? 
+<p>
+what is the chance the next person will order a water? </br>
 it's a pretty simple probability; 200 waters / 1500 total drinks = 0.14 or 14%
+</p>
 
-
+<p>
 now say we run the t-shirt stand at the same concert....
+</p>
 
-instead of only selling 3 items (like at the bar) we sell 20 different types of t-shirts. again we record orders over the night...
+<p>
+instead of only selling 3 items (like at the bar) we sell 20 different types of t-shirts.
+again we record orders over the night...
+</p>
 
-R> x = rep(c(15,10,5,4,3,1,0), c(2,2,2,3,4,4,3))
-R> simple_probs = x / sum(x)
+<p>
+<table>
+<tr><td>br tour</td><td>15</td><td>pennywise</td><td>3</td><tr>
+<tr><td>br logo1</td><td>15</td><td>strung out</td><td>3</td><tr>
+<tr><td>br album art 1</td><td>10</td><td>propagandhi</td><td>3</td><tr>
+<tr><td>br album art 3</td><td>10</td><td>bouncing souls</td><td>1</td><tr>
+<tr><td>nofx logo1</td><td>5</td><td>the vandals</td><td>1</td><tr>
+<tr><td>nofx logo2</td><td>5</td><td>dead kennedys</td><td>1</td><tr>
+<tr><td>lagwagon</td><td>4</td><td>misfits</td><td>1</td><tr>
+<tr><td>frenzal rhomb</td><td>4</td><td>the offspring</td><td>0</td><tr>
+<tr><td>rancid</td><td>4</td><td>the ramones</td><td>0</td><tr>
+<tr><td>descendants</td><td>3</td><td>mxpx</td><td>0</td><tr>
+</table>
+</p>
+
+<p>
+we can ask similiar questions again regarding the chance of people buying a particular t-shirt
+</p>
+
+<p>
+what's the chance the next person to buy a t-shirt wants the official tour shirt? 
+15 tour shirts sold / 88 sold in total = 0.170 or 17.0%
+</p>
+
+<p>
+what's the chance the next person to buy a t-shirt wants the a descendants t-shirt?
+3 descendants shirts sold / 88 sold in total = 0.034 or 3.4%
+</p>
+
+<p>
+what's the chance the next person to buy a t-shirt wants the an offspring t-shirt?
+0 offspring shirts sold / 88 sold in total = 0 or 0%
+</p>
+
+<p>
+if you're like me then the last one "feels" wrong, even though we've not seen a purchase of at least 1 shirt
+it seems a bit rough to say there is <em>no</em> chance of someone buying one. 
+this illustrates one of the problems of dealing 
+<a href="http://en.wikipedia.org/wiki/Prior_probability">prior probabilities</a>
+</p>
+
+<p>
+<pre>
+for reference here are the probabilities per shirt
+R> sales = rep(c(15,10,5,4,3,1,0), c(2,2,2,3,4,4,3))
+R> simple_probs = sales / sum(sales)
  [1] 0.17045455 0.17045455 0.11363636 0.11363636 0.05681818 0.05681818
  [7] 0.04545455 0.04545455 0.04545455 0.03409091 0.03409091 0.03409091
 [13] 0.03409091 0.01136364 0.01136364 0.01136364 0.01136364 0.00000000
 [19] 0.00000000 0.00000000
+</pre>
+</p>
 
-88 total
-1 15 br tour        0.170
-2 15 br logo1       0.170
-3 10 br album art 1 0.113
-4 10 br album art 3 0.113
-5 5  nofx logo1     0.056
-6 5  nofx logo2     0.056
-7 4  lagwagon       0.045
-8 4  frenzal rhomb  0.045
-9 4  rancid         0.045
-10 3 descendants    0.034
-11 3 pennywise      0.034
-12 3 strung out     0.034
-13 3 propagandhi    0.034
-14 1 bouncing souls 0.011
-15 1 the vandals    0.011
-16 1 dead kennedys  0.011
-17 1 misfits        0.011
-18 0 the offspring  0
-19 0 the ramones    0
-20 0 mxpx           0
-
-we can ask similiar questions again regarding the chance of people buying a particular t-shirt
-
-eg1 what's the chance the next person to buy a t-shirt wants the official tour shirt? 
-15 tour shirts sold / 88 sold in total = 0.170 or 17.0%
-
-eg2 what's the chance the next person to buy a t-shirt wants the a descendants t-shirt?
-3 descendants shirts sold / 88 sold in total = 0.034 or 3.4%
-
-eg3 what's the chance the next person to buy a t-shirt wants the an offspring t-shirt?
-0 offspring shirts sold / 88 sold in total = 0 or 0%
-
-hmmmm, this "feels" wrong, even though we've not had a purchase of at least 1 shirt it seems a bit rough to 
-say there is _no_ chance of someone buying one. this illustrates one of the problems of dealing <a href="http://en.wikipedia.org/wiki/Prior_probability">prior probabilities</a>
-
+<p>
 i've discussed the problems with zero probabilities a few times in previous experiments
 (<a href="../rss.feed/p3/">here</a> and <a href="../semi_supervised_naive_bayes/semi_supervised_bayes.html">here</a>)
+and the approach i've always used is the simple 
+<a href="http://en.wikipedia.org/wiki/Rule_of_succession">rule of succession</a> where we avoid
+the zero problem by adding one to each probability
+</p>
 
-the approach i've always used is the simple <a href="http://en.wikipedia.org/wiki/Rule_of_succession">rule of succession</a> where we avoid the zero problem by adding one to each probability
+<p>
+<pre>
+here are the values for the succession rule case
 
-R> x_s = x+1
-R> smooth_probs = x_s / sum(x_s)
-
+R> sales_plus_one = x+1
+R> smooth_probs = sales_plus_one / sum(sales_plus_one)
  [1] 0.14814815 0.14814815 0.10185185 0.10185185 0.05555556 0.05555556
  [7] 0.04629630 0.04629630 0.04629630 0.03703704 0.03703704 0.03703704
 [13] 0.03703704 0.01851852 0.01851852 0.01851852 0.01851852 0.00925926
 [19] 0.00925926 0.00925926
+</pre>
+</p>
 
-
-105 total
-1 16 br tour        0.148
-2 16 br logo1       0.148
-3 11 br album art 1 0.101
-4 11 br album art 3 0.101
-5 6 nofx logo1      0.055
-6 6 nofx logo2      0.055
-7 5 lagwagon        0.046
-8 5 frenzal rhomb   0.046
-9 5 rancid          0.046
-10 4 descendants    0.037
-11 4 pennywise      0.037
-12 4 strung out     0.037
-13 4 propagandhi    0.037
-14 2 bouncing souls 0.018
-15 2 the vandals    0.018
-16 2 dead kennedys  0.018
-17 2 misfits        0.018
-18 1 the offspring  0.009
-19 1 the ramones    0.009
-20 1 mxpx           0.009
-
+<p>
 it's always kind of worked (well at least better than having the zeros) but it's always felt wrong too. 
+</p>
 
+<p>
 finally the other day i found another approach, that seems a lot more statistically sound.
+</p>
 
-it's called <a href="http://en.wikipedia.org/wiki/Good%E2%80%93Turing_frequency_estimation">good-turing estimation</a> and it
-was developed as part of <a href="http://en.wikipedia.org/wiki/Alan_Turing">turing's</a> work at bletchley park (so it must be awesome). 
-a decent implementation is explained in <a href="http://www.grsampson.net/AGtf1.html">this paper</a> by geoffrey sampson (it's somewhat more complex than adding 1)
+<p>
+it's called <a href="http://en.wikipedia.org/wiki/Good%E2%80%93Turing_frequency_estimation">good-turing estimation</a> 
+and it was developed as part of <a href="http://en.wikipedia.org/wiki/Alan_Turing">turing's</a> work at bletchley 
+park (so it must be awesome). a decent implementation is explained in 
+<a href="http://www.grsampson.net/AGtf1.html">this paper</a> by geoffrey sampson (it's somewhat more 
+complex than adding 1)
+</p>
 
-it takes the frequency of frequencies.. eg
+<p>
+it works on using the frequency of frequencies and redistributes the probabilities to include a
+0th entry which is total allocation we should give to items never seen before.
+</p>
 
-15 2
-10 2
-5  2
-4  3
-3  4
-1  4
+<p>
+in our case the total allocation for the 0th case is 0.045, since we had 3 cases of shirts that weren't
+seen we distribute this 0.045 across the 3.
+</p>
 
-converts to probabilities...
-
-15 0.170
-10 0.113
-5  0.056
-4  0.045
-3  0.034
-1  0.011
-
-and redistributes the probabilities to include a 0th entry which is total allocation we should give to items never seen before
-
-0th 0.04545
-
-todo: up to us how to distribute this 0th value
-todo: convert code from c version to r
-
-15 0.160
-10 0.107
-5  0.054
-4  0.043
-3  0.033
-1  0.011
-0  0.015
-
-it calculates the probabilities as...
-
- [1] 0.16030 0.16030 0.10740 0.10740 0.05435 0.05435 0.04374 0.04374 0.04374
-[10] 0.03311 0.03311 0.03311 0.03311 0.01169 0.01169 0.01169 0.01169 0.01515
-[19] 0.01515 0.01515
+<p>
+<table>
+15 2 0.170 0.148 0.160
+10 2 0.113 0.101 0.107
+5  2 0.056 0.055 0.054
+4  3 0.045 0.046 0.043
+3  4 0.034 0.037 0.033
+1  4 0.011 0.018 0.011
+0  - 0.000 0.009 0.015
+</table>
+</p>
 
 <img src="tshirts.png"/>
 
-interestingly it puts the t-shirts that weren't brought at an estimated purchase frequency of 1.3, higher than the ones that actually were purchased once.
+<p>
+what i think is the most interesting is that it puts the t-shirts that <em>weren't</em> brought
+at an estimated purchase frequency higher than the ones that actually <em>were</em> purchased once.
+</p>
 
-now this is all good, but i actually don't run the bar at a bad religion concert (or the t-shrit stand) i'm actually interested in this in how it applies to text processing
+<p>
+now this is all good, but i actually don't run the bar at a bad religion concert (or the t-shirt stand) 
+and i'm actually interested in this in how it applies to text processing...
+</p>
 
-how can we measure if good-turing is a better estimate than the much simpler succession approach?
+<p>
+so how might we measure if good-turing is a better estimate than the much simpler succession approach?
+</p>
 
-consider a <a href="tweets.txt.gz">small sample of 15e3 or so tweets</a>
+<p>
+consider a <a href="tweets.txt.gz">small sample of 15e3 or so tweets</a>, 
+that i've run through a simple <a href="http://www.nltk.org/">ntlk</a> tokeniser which retains 
+#hashtags and @user_mentions and only emits only the domain of urls (after derferencing 
+url shorteners if required) to generate a <a href="tokenised.txt.gz">tokenised version</a>
+</p>
 
-i've run them through a simple <a href="http://www.nltk.org/">ntlk</a> tokeniser which retains #hashtags and @user_mentions and only emits only the domain of urls (after derferencing url shorteners if required) to generate a <a href="tokenised.txt.gz">tokenised version</a>
-
+<pre>
 eg
 RT @jeffbarr: New AWS EC2 Instance Type: Cluster GPU - http://bit.ly/ec2gpu  #hpc #nvidia #wow
-
-become
+becomes
 rt @jeffbarr new aws ec2 instance type cluster gpu [aws.typepad.com] #hpc #nvidia #wow
+</pre>
 
-some stats about the tweets
-15e3 in tweets, 218e3 tokens total, 27e3 different tokens
+<p>
+some stats about the tweets include: 15e3 tweets, 218e3 tokens total, 27e3 terms
+</p>
 
-tokens follow a classic zipf power law distribution; 
+<p>
+tokens follow a classic zipf power law distribution with top tokens being what we expect...
+<pre>
+freqs = { 'the' => 6348, 'to' => 4921, 'a' => 4270, 'i' => 3475, 'of' => 3159, 'in' => 2757, 'is' => 2629, ... }
+</pre>
 
-top tokens are classic langauge constructs
-   6348 the
-   4921 to
-   4270 a
-   3475 i
-   3159 of
-   2757 in
-   2629 is
+<p>
+with a tail end of 15e3 terms (of the 27e3 total) occuring only once in the corpus.
+</p>
 
-and 15e3 tokens (of the 27e3 total) occurance only once in the corpus, 
-
-instead of counting beers or t-shirts we count occurances of these tokens.
-
-let's consider the tokens in the first 90% of the tweets.
-how are good are these at predicting the frequencies of terms in the last 10% when we use just the observed unmodified frequencies?
-
+<p>
+let's test our estimators by seeing how well the first half of the tweets can predict the frequency in the second half
+</p>
 
 
 
