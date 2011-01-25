@@ -1,0 +1,1 @@
+$ head -n100 ../tokenised.txt | ./run_comparison.rb

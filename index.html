@@ -106,17 +106,22 @@ and the approach i've always used is the simple
 the zero problem by adding one to each probability
 </p>
 
-<p>
 <pre>
 here are the values for the succession rule case
 
-R> sales_plus_one = x+1
+R> sales = rep(c(15,10,5,4,3,1,0), c(2,2,2,3,4,4,3))
+R> sales_plus_one = sales + 1
 R> smooth_probs = sales_plus_one / sum(sales_plus_one)
  [1] 0.14814815 0.14814815 0.10185185 0.10185185 0.05555556 0.05555556
  [7] 0.04629630 0.04629630 0.04629630 0.03703704 0.03703704 0.03703704
 [13] 0.03703704 0.01851852 0.01851852 0.01851852 0.01851852 0.00925926
 [19] 0.00925926 0.00925926
 </pre>
+</p>
+
+<p>
+one important subtle note about this is that we need to know ahead of time the number
+of zero cases (eg 3 in our tshirt case).
 </p>
 
 <p>
@@ -198,7 +203,7 @@ freqs = { 'the' => 6348, 'to' => 4921, 'a' => 4270, 'i' => 3475, 'of' => 3159, '
 </pre>
 
 <p>
-with a tail end of 15e3 terms (of the 27e3 total) occuring only once in the corpus.
+with a (long) tail of 15e3 terms (of the 27e3 total) occuring only once in the corpus.
 </p>
 
 <p>
