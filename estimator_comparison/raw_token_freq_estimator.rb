@@ -1,5 +1,5 @@
 
-class RawTokenFreq
+class RawTokenFreqEstimator
   attr_reader :freqs, :total_tokens
 
   def initialize
@@ -24,10 +24,13 @@ class RawTokenFreq
     @freqs.keys.size
   end
 
-  def estimated_freq_of token
+  def all_tokens_in_test_set tokens
+  end
+
+  def estimated_prob_of token
     freq_of token
   end
-  
+
   def freq_of token
     if @freqs.has_key? token
       @freqs[token] / @total_tokens.to_f
@@ -35,8 +38,5 @@ class RawTokenFreq
       0
     end
   end
-
-  def all_tokens_in_test_set tokens
-  end
-
+  
 end

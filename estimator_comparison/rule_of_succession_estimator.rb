@@ -1,4 +1,4 @@
-class RuleOfSuccession
+class RuleOfSuccessionEstimator
 
   attr_reader :freqs
 
@@ -20,7 +20,7 @@ class RuleOfSuccession
     @total_num_uniq_tokens = (@freqs.keys + tokens).uniq.size
   end
 
-  def estimated_freq_of token
+  def estimated_prob_of token
     freq = @freqs[token] || 0
     (freq+1).to_f / @total_num_uniq_tokens
   end
