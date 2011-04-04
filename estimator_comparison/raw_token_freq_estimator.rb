@@ -24,9 +24,6 @@ class RawTokenFreqEstimator
     @freqs.keys.size
   end
 
-  def all_tokens_in_test_set tokens
-  end
-
   def estimated_prob_of token
     freq_of token
   end

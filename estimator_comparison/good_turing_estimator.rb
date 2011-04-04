@@ -43,8 +43,8 @@ class GoodTuringEstimator
     cmd = "./D_SGT <#{d_sgt_input_file}"
     result = `#{cmd}`
     #puts ">run d sgt cmd=#{cmd} exit=#{$?} #{$?.exitstatus}"
-    raise "couldn't run d_sgt #{result}" unless $?.to_s=='1' # should be .success?
-
+    #!!! process returns 1 on success :( raise "couldn't run d_sgt #{result}" unless $?.to_s=='256' # should be .success?
+   
     @freq_to_estimate_prob = {}
     result.split("\n").each do |line|
       freq, estimated_prob = line.chomp.split
